@@ -4,9 +4,6 @@
 # Sandbox py file
 sandbox.py
 
-# Input data
-input/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
