@@ -1,13 +1,10 @@
 from functools import partial
 import timeit
 import random
-<<<<<<< HEAD
 from PyQt6.QtWidgets import QLineEdit, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLabel, QGraphicsDropShadowEffect
-=======
 from PyQt6.QtWidgets import QLineEdit, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QPushButton, QLabel
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
 from PyQt6.QtGui import QPixmap, QPainter, QFont, QColor
-from PyQt6.QtCore import Qt, QRect
+from PyQt6.QtCore import Qt
 from time import time
 from modules.solvepuzzle import solvepuzzle
 
@@ -53,11 +50,8 @@ class UserForm(QWidget):
                 number = i * 5 + j + 1  # Calculate the number
                 # Create a button with the number as text
                 button = QPushButton(str(number))
-<<<<<<< HEAD
                 button.setFont(QFont('Source Code Pro', 13, QFont.Weight.Bold))
-=======
                 button.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
                 color = AOC_COLOR[random.choice(list(AOC_COLOR.keys()))].name()
                 button.setStyleSheet(
                     f"background-color: transparent; color: {color};text-align: right;")
@@ -79,12 +73,7 @@ class UserForm(QWidget):
         self.title.setAlignment(Qt.AlignmentFlag.AlignLeft)
         color = AOC_COLOR['brightgreen'].name()
         self.title.setStyleSheet(f"color: {color};")
-<<<<<<< HEAD
         self.title.setFont(QFont('Source Code Pro', 36))
-=======
-        self.title.setFont(QFont('Source Code Pro', 36, QFont.Weight.Bold))
-        self.title.setText('Pick a day in calendar')
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
         self.title.setFixedSize(self.title.sizeHint().width(),
                                 grid_widget.sizeHint().height())
         self.glow(color, self.title)
@@ -101,19 +90,12 @@ class UserForm(QWidget):
 
         # -------------
         # Labels for Solutions
-<<<<<<< HEAD
         self.label_sol1 = QLabel('Part 1', self)
         color = "silver"
         self.label_sol1.setStyleSheet(f"color: {color};")
         self.label_sol1.setFont(QFont('Source Code Pro', 18))
-=======
-        label_sol1 = QLabel('Part 1', self)
-        label_sol1.setStyleSheet("color: silver;")
-        label_sol1.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
         self.sol1 = QLineEdit(self)
         self.sol1.setStyleSheet(
-<<<<<<< HEAD
             f"background-color: transparent; color: {color}; border: none;")
         self.sol1.setFont(QFont('Source Code Pro', 18))
         self.glow(color, self.label_sol1)
@@ -123,30 +105,16 @@ class UserForm(QWidget):
         color = AOC_COLOR['golden'].name()
         self.label_sol2.setStyleSheet(f"color: {color};")
         self.label_sol2.setFont(QFont('Source Code Pro', 18))
-=======
-            "background-color: transparent; color: silver; border: none;")
-        self.sol1.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
-
-        label_sol2 = QLabel('Part 2', self)
-        color = AOC_COLOR['golden'].name()
-        label_sol2.setStyleSheet(f"color: {color};")
-        label_sol2.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
         self.sol2 = QLineEdit(self)
         self.sol2.setStyleSheet(
             f"background-color: transparent; color: {color}; border: none;")
-<<<<<<< HEAD
         self.sol2.setFont(QFont('Source Code Pro', 18))
         self.glow(color, self.label_sol2)
         self.glow(color, self.sol2)
-=======
-        self.sol2.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
         # -------------
 
         # -------------
         # Labels for Execution time
-<<<<<<< HEAD
         self.label_exetime = QLabel('Execution time', self)
         color = AOC_COLOR['brightgreen'].name()
         self.label_exetime.setStyleSheet(f"color: {color};")
@@ -157,16 +125,6 @@ class UserForm(QWidget):
         self.exetime.setFont(QFont('Source Code Pro', 18))
         self.glow(color, self.label_exetime)
         self.glow(color, self.exetime)
-=======
-        label_exetime = QLabel('Execution time', self)
-        color = AOC_COLOR['green'].name()
-        label_exetime.setStyleSheet(f"color: {color};")
-        label_exetime.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
-        self.exetime = QLabel(self)
-        self.exetime.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.exetime.setStyleSheet(f"color: {color};")
-        self.exetime.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
         # -------------
 
         # -------------
@@ -263,10 +221,7 @@ class UserForm(QWidget):
         glow_effect.setOffset(0, 0)
         label.setGraphicsEffect(glow_effect)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c1892ee19846c666ca88ca7597d997cd51b8f5f5
 DAY_TITLE = {'1': 'Trebuchet?!',
              '2': 'Cube Conundrum',
              '3': 'Gear Ratios',
