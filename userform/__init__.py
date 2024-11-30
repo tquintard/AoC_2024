@@ -51,7 +51,6 @@ class UserForm(QWidget):
                 # Create a button with the number as text
                 button = QPushButton(str(number))
                 button.setFont(QFont('Source Code Pro', 13, QFont.Weight.Bold))
-                button.setFont(QFont('Source Code Pro', 18, QFont.Weight.Bold))
                 color = AOC_COLOR[random.choice(list(AOC_COLOR.keys()))].name()
                 button.setStyleSheet(
                     f"background-color: transparent; color: {color};text-align: right;")
