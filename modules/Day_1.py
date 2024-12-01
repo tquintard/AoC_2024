@@ -11,15 +11,15 @@ def main(inputs: str) -> Tuple[int, int]:
 
     # Split all_locs into r_loc and l_loc by alternating indices
     for i in range(0, len(all_locs), 2):
-        r_loc.append(all_locs[i]), l_loc.append(all_locs[i + 1])
+        l_loc.append(all_locs[i]), r_loc.append(all_locs[i + 1])
 
     # Sort both location lists independently
-    r_loc.sort(), l_loc.sort()
+    l_loc.sort(), r_loc.sort()
 
     # Calculate sol1: Sum of absolute differences between sorted locations
-    sol1 = sum(abs(r - l) for r, l in zip(r_loc, l_loc))
+    sol1 = sum(abs(l - r) for l, r in zip(l_loc, r_loc))
 
     # Calculate sol2: Weighted sum based on occurrences
-    sol2 = sum(r * l_loc.count(r) for r in r_loc)
+    sol2 = sum(l * r_loc.count(l) for l in l_loc)
 
     return sol1, sol2
