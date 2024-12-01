@@ -221,7 +221,7 @@ class UserForm(QWidget):
         label.setGraphicsEffect(glow_effect)
 
 
-DAY_TITLE = {'1': 'Trebuchet?!',
+DAY_TITLE = {'1': 'Historian Hysteria',
              '2': 'Cube Conundrum',
              '3': 'Gear Ratios',
              '4': 'Scratchcards',

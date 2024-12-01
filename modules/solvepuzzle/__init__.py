@@ -2,7 +2,7 @@ from modules import Day_1, Day_2, Day_3, Day_4, Day_5, Day_6, Day_7, Day_8, Day_
 from modules.common import get_input
 from typing import List
 
-DAY_MODULES = {'1': (Day_1, '\n'), }
+DAY_MODULES = {'1': (Day_1, None)}
 # '2': (Day_2, '\n'), '3': (Day_3, '\n'), '4': (Day_4, '\n'), '5': (Day_5, '\n\n'),
 # '6': (Day_6, ''), '7': (Day_7, ''), '8': (Day_8, '\n'), '9': (Day_9, '\n'), '10': (Day_10, '\n'),
 # '11': (Day_11, '\n'), '12': (Day_12, ''), '13': (Day_13, '\n\n'), '14': (Day_14, '\n'), '15': (Day_15, ','),
