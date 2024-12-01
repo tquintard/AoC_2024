@@ -11,8 +11,7 @@ def main(inputs: str) -> Tuple[int, int]:
 
     # Split all_locs into r_loc and l_loc by alternating indices
     for i in range(0, len(all_locs), 2):
-        r_loc.append(all_locs[i])
-        l_loc.append(all_locs[i + 1])
+        r_loc.append(all_locs[i]), l_loc.append(all_locs[i + 1])
 
     # Sort both location lists independently
     r_loc.sort(), l_loc.sort()
