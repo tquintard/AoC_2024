@@ -15,8 +15,7 @@ def main(inputs: str) -> Tuple[int, int]:
         l_loc.append(all_locs[i + 1])
 
     # Sort both location lists independently
-    r_loc.sort()
-    l_loc.sort()
+    r_loc.sort(), l_loc.sort()
 
     # Calculate sol1: Sum of absolute differences between sorted locations
     sol1 = sum(abs(r - l) for r, l in zip(r_loc, l_loc))
