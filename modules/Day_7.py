@@ -1,5 +1,6 @@
 from typing import List, Tuple
 import re
+from common import get_input
 from math import prod
 
 OPS = [prod, sum, lambda x: int(str(x[0])+str(x[1]))]
