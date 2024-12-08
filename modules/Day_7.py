@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 import re
 from math import prod
 
@@ -22,7 +22,7 @@ def is_valid_eq(result, operands, part) -> bool:
     return False
 
 
-def main(inputs: str) -> List[int, int]:
+def main(inputs: str) -> Tuple[int, int]:
     """
     Processes a series of equations and calculates the sum of results for 
     which the operands can be combined to match the result using 
