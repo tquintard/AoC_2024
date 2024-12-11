@@ -1,63 +1,32 @@
-import logging
-from os.path import dirname, join
-from typing import List
-from math import gcd
+from typing import List, Tuple
+
+# Directions for neighbor look-up: up, right, down, left
+LOOK_DIR = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+# Directions to look for neighbors: right, diagonal-down-right, down, diagonal-down-left, left, diagonal-up-left, up, diagonal-up-right
+FULL_LOOK_DIR = [(1, 0), (1, 1), (0, 1), (-1, 1),
+                 (-1, 0), (-1, -1), (0, -1), (1, -1)]
 
 
-def create_grid(inputs: list):
+def create_grid(inputs: List):
     grid = list()
     for line in inputs:
         grid.append(list(line))
-    return grid
+    return grid, len(grid), len(grid[0])
 
 
-def transpose(grid):
-    return [*zip(*grid)]
+def pos_in_grid(x: int, y: int, nb_col: int, nb_row: int) -> bool:
+    """ Check if the position (x, y) is within the bounds of the grid """
+    return 0 <= x < nb_col and 0 <= y < nb_row
 
 
-def reverse(_list: list) -> list:
-    return _list[::-1]
+def next_direction(current_dir: Tuple, directions: List[Tuple]) -> Tuple:
+    """
+    Get the next direction in a cyclic list of directions.
+    """
+    return directions[(directions.index(current_dir) + 1) % len(directions)]
 
 
-def lcm(*args: int):
-    if len(args) < 2:
-        raise ValueError("At least two integers are required.")
-
-    def lcm(a, b):
-        return abs(a * b) // gcd(a, b)
-    result = args[0]
-    for i in range(1, len(args)):
-        result = lcm(result, args[i])
-
-    return result
-
-
-def is_power2(num: int) -> bool:
-    return num > 0 and (num & (num - 1)) == 0
-
-
-def init_log():
-    # Set up logging
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-    log_file = '../app.log'
-    file_handler = logging.FileHandler(log_file, mode='w')
-    formatter = logging.Formatter('%(message)s')
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    return logger
-
-
-def print_grid(logger, grid: list) -> None:
-    for row in grid:
-        logger.debug(''.join(row))
-
-
-def print_log(logger, msg: object) -> None:
-    logger.debug(msg)
-
-
-def get_input(day: int, separator: str, sample: bool = False) -> List[str]:
+def get_input(day: int, separator: str = '\n', sample: bool = False) -> List[str]:
     """
     Read input data from a file for a given day of Advent of Code.
 
