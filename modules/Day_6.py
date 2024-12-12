@@ -1,14 +1,10 @@
 from typing import Tuple, List
-from common import create_grid, get_input
-
-# Directions for neighbor look-up: up, right, down, left
-LOOK_DIR = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+from common import create_grid, pos_in_grid, get_input, next_position, next_direction, LOOK_DIR
 
 
 def main(inputs: str) -> Tuple[int, int]:
     # Create a 2D grid from the input
-    grid = create_grid(inputs.splitlines())
-    nb_row, nb_col = len(grid), len(grid[0])
+    grid, nb_row, nb_col = create_grid(inputs.splitlines())
 
     # Initialize sets to track visited positions and directions
     pos_dir_visited, pos_visited = set(), set()
@@ -17,19 +13,13 @@ def main(inputs: str) -> Tuple[int, int]:
     start = next((x, y) for y, row in enumerate(grid)
                  for x, col in enumerate(row) if col == '^')
 
-    def next_direction(current_dir: Tuple, directions: List[Tuple]) -> Tuple:
-        """
-        Get the next direction in a cyclic list of directions.
-        """
-        return directions[(directions.index(current_dir) + 1) % len(directions)]
-
     def walk(x: int, y: int, dx_dy: Tuple[int, int]) -> int:
         """
         Traverse the grid starting from (x, y) in the given direction `dx_dy`.
         Handles direction cycling and checks for visited positions.
         Stop once the walk get you out of the grid.
         """
-        while 0 <= x < nb_col and 0 <= y < nb_row:
+        while pos_in_grid(x, y, nb_row, nb_col):
             # If the cell is not blocked
             if grid[y][x] != '#':
                 pos_visited.add((x, y))  # Mark the cell as visited
@@ -45,7 +35,7 @@ def main(inputs: str) -> Tuple[int, int]:
                 dx_dy = next_direction(dx_dy, LOOK_DIR)
 
             # Move to the next position
-            x, y = x + dx_dy[0], y + dx_dy[1]
+            x, y = next_position((x, y), dx_dy)
         return 0
 
     # Part 1: Perform the initial guard walk and record visited positions
@@ -68,5 +58,5 @@ def main(inputs: str) -> Tuple[int, int]:
     return sol1, sol2
 
 
-inputs = get_input(6, "", False)
+inputs = get_input(6, "", True)
 print(main(inputs))

@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from os.path import dirname, join
 
 # Directions for neighbor look-up: up, right, down, left
 LOOK_DIR = [(0, -1), (1, 0), (0, 1), (-1, 0)]
@@ -24,6 +25,10 @@ def next_direction(current_dir: Tuple, directions: List[Tuple]) -> Tuple:
     Get the next direction in a cyclic list of directions.
     """
     return directions[(directions.index(current_dir) + 1) % len(directions)]
+
+
+def next_position(pos: Tuple[int, int], dx_dy: Tuple[int, int]) -> Tuple[int, int]:
+    return map(sum, zip(pos, dx_dy))
 
 
 def get_input(day: int, separator: str = '\n', sample: bool = False) -> List[str]:
